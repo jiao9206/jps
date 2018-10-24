@@ -21,6 +21,7 @@ public class TestController {
 	@ResponseBody
 	public String test() {
 		List<Map> result=testMapper.queryAll();
-		return result.toString();
+		System.out.println(result);
+		return "ÃÃ×ÓÄãºÃ°¡";
 	}
 }

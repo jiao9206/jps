@@ -23,6 +23,6 @@
 		
 		<!-- 注入mybatis映射器（dao接口），会自动查找与接口同目录下的xml配置文件 -->
 		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-  			<property name="basePackage" value="com.stu.jps.test.dao" />
+  			<property name="basePackage" value="com.stu.jps.*.dao" />
 		</bean>
 </beans>

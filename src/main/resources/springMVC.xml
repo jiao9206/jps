@@ -19,5 +19,13 @@
 		  p:prefix="/views/" 
 		  p:suffix=".jsp"/>
 
+	<!-- 解决给前台的返回值中文乱码问题 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value="text/html;charset=utf-8"></property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 		  
 </beans>

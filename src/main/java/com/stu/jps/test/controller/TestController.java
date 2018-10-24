@@ -19,8 +19,8 @@ public class TestController {
 	
 	@RequestMapping("/testMethod")
 	@ResponseBody
-	public List<Map> test() {
+	public String test() {
 		List<Map> result=testMapper.queryAll();
-		return result;
+		return result.toString();
 	}
 }

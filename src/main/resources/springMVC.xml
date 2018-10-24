@@ -14,12 +14,13 @@
         
     <!-- 开启自动扫描包 -->
 	<context:component-scan base-package="com.**.controller" />
+	
 	<!-- 配置视图解析器 -->	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		  p:prefix="/views/" 
 		  p:suffix=".jsp"/>
 
-	<!-- 解决给前台的返回值中文乱码问题 -->
+	<!-- 解决给前台的返回JSON中文乱码问题,应用在@ResponseBody情况下 -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,9 +20,10 @@ public class TestController {
 	
 	@RequestMapping("/testMethod")
 	@ResponseBody
-	public String test() {
+	public String test(String a) {
 		List<Map> result=testMapper.queryAll();
 		System.out.println(result);
-		return "ÃÃ×ÓÄãºÃ°¡";
+		System.out.println(a);
+		return a+"ÄãºÃ°¡°¡°¡";
 	}
 }

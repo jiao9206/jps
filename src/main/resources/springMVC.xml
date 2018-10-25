@@ -12,7 +12,7 @@
                 http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 				http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
         
-    <!-- 开启自动扫描包 -->
+    <!-- 开启自动扫描包，只扫描controller -->
 	<context:component-scan base-package="com.**.controller" />
 	
 	<!-- 配置视图解析器 -->	

@@ -6,17 +6,8 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    	
-        <!-- DBCP数据源配置 -->
-        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        	<property name="driverClassName" value="${datasource.driverClassName}" />
-        	<property name="url" value="${datasource.url}" />
-        	<property name="username" value="${datasource.username}" />
-        	<property name="password" value="${datasource.password}" />
-        </bean>
         
-        
-        <!-- 核心SqlSession -->
+        <!-- mybatis核心SqlSession -->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
   			<property name="dataSource" ref="dataSource" />
 		</bean>
@@ -25,4 +16,5 @@
 		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
   			<property name="basePackage" value="com.stu.jps.*.dao" />
 		</bean>
+		
 </beans>

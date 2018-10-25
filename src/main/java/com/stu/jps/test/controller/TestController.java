@@ -1,29 +1,23 @@
 package com.stu.jps.test.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.stu.jps.test.dao.TestMapper;
+import com.stu.jps.test.service.ITestService;
 
 @Controller
 @RequestMapping("/testController")
 public class TestController {
 
 	@Autowired
-	private TestMapper testMapper;
+	private ITestService testService;
 	
 	@RequestMapping("/testMethod")
 	@ResponseBody
 	public String test(String a) {
-		List<Map> result=testMapper.queryAll();
-		System.out.println(result);
-		System.out.println(a);
-		return a+"ÄãºÃ°¡°¡°¡";
+		testService.test();
+		return "ÄãºÃ";
 	}
 }

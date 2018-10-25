@@ -7,6 +7,10 @@
 		select * from test
 	</select>
 	
+	<insert id="test">
+		insert into test values('4','test',20)
+	</insert>
+	
 </mapper>
 
    

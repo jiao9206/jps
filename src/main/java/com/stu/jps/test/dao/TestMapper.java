@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface TestMapper {
 	
 	public List<Map> queryAll();
+	
+	public void test();
 }

@@ -2,6 +2,8 @@ package com.stu.jps.test.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,8 @@ import com.stu.jps.test.service.ITestService;
 @RequestMapping("/testController")
 public class TestController {
 
+	private static Logger log=LoggerFactory.getLogger(TestController.class);
+	
 	@Autowired
 	private ITestService testService;
 	
@@ -23,6 +27,7 @@ public class TestController {
 		List<Test> list;
 		try {
 			list=testService.queryAll();
+			log.info("test logback:"+list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

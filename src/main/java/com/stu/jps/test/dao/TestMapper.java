@@ -1,14 +1,15 @@
 package com.stu.jps.test.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Repository;
+
+import com.stu.jps.test.entity.Test;
 
 @Repository
 public interface TestMapper {
 	
-	public List<Map> queryAll();
+	public List<Test> queryAll();
 	
 	public void save1();
 	

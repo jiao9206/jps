@@ -10,6 +10,7 @@
         <!-- mybatis核心SqlSession -->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
   			<property name="dataSource" ref="dataSource" />
+  			<property name="configLocation" value="classpath:mybatisConfig.xml" />
 		</bean>
 		
 		<!-- 注入mybatis映射器（dao接口），会自动查找与接口同目录下的xml配置文件 ，并且自动注入SqlSession-->

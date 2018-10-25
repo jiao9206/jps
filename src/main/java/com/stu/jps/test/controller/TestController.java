@@ -17,7 +17,13 @@ public class TestController {
 	@RequestMapping("/testMethod")
 	@ResponseBody
 	public String test(String a) {
-		testService.test();
+		try {
+			testService.update();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "System Exception!";
+		}
 		return "ÄãºÃ";
 	}
 }

@@ -7,10 +7,13 @@
 		select * from test
 	</select>
 	
-	<insert id="test">
-		insert into test values('4','test',20)
+	<insert id="save1">
+		insert into test values('4','test1',20)
 	</insert>
 	
+	<insert id="save2">
+		insert into test values('5','test2',20)
+	</insert>
 </mapper>
 
    

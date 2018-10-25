@@ -46,7 +46,7 @@
     
     <!-- aop配置被事务管理的包路径 -->
     <aop:config>
-    	<aop:pointcut expression="execution(* com.stu.jps.*.dao.*.*(..))" id="pt"/>
+    	<aop:pointcut expression="execution(* com.stu.jps.*.service.*.*(..))" id="pt"/>
     	<aop:advisor advice-ref="txAdvice" pointcut-ref="pt"/>
     </aop:config>
     

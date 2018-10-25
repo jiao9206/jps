@@ -10,5 +10,7 @@ public interface TestMapper {
 	
 	public List<Map> queryAll();
 	
-	public void test();
+	public void save1();
+	
+	public void save2();
 }

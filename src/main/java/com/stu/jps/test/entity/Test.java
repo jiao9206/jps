@@ -1,7 +1,5 @@
 package com.stu.jps.test.entity;
 
-import org.apache.ibatis.type.Alias;
-
 public class Test {
 
 	private String id;

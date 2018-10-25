@@ -27,6 +27,11 @@
      	<property name="url" value="${datasource.url}" />
      	<property name="username" value="${datasource.username}" />
      	<property name="password" value="${datasource.password}" />
+     	<property name="initialSize" value="${dbcp.initialSize}"></property>
+     	<property name="maxIdle" value="${dbcp.maxIdle}"></property>
+     	<property name="minIdle" value="${dbcp.minIdle}"></property>
+     	<property name="maxActive" value="${dbcp。maxActive}"></property>
+     	<property name="logAbandoned" value="true"/> 
      </bean>
         
     <!-- spring jdbc事务管理器 -->

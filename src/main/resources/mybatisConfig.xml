@@ -9,4 +9,5 @@
 	<typeAliases>
 		<package name="com.stu.jps"/>
 	</typeAliases>
+	
 </configuration>

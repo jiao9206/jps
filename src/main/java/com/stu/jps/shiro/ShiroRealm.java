@@ -3,7 +3,10 @@ package com.stu.jps.shiro;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -41,12 +44,17 @@ public class ShiroRealm extends AuthorizingRealm{
 		User user=userService.queryUser(username, password);
 		if(user==null) {
 			log.debug("no user:"+username);
+			//用户不存在
+			//throw new UnknownAccountException();
+			//用户名密码不匹配
+			throw new IncorrectCredentialsException();
 		}else if("1".equals(user.getStatus())) {
 			log.debug("user:"+username+" is locked!");
+			//账户被锁定
+			throw new LockedAccountException();
 		}else {
 			return new SimpleAuthenticationInfo(username,password,getName());
 		}
-		return null;
 	}
 
 }

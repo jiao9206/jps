@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h2>Login Page</h2>
-	<a href="<%=request.getContextPath() %>/user/doLogin">doLogin</a>
+	<a href="<%=request.getContextPath() %>/user/doLogin?username=admin&password=1">doLogin</a>
 </body>
 </html>

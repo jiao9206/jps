@@ -1,5 +1,7 @@
 package com.stu.jps.user.dao;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.stu.jps.user.entity.User;
@@ -13,5 +15,5 @@ public interface UserMapper {
 	 * @param password
 	 * @return
 	 */
-	User queryUser(String username,String password);
+	User queryUser(Map map);
 }

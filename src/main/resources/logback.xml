@@ -1,0 +1,45 @@
+<configuration>
+	<!-- 应用名称 -->
+	<contextName>JPS</contextName>
+	<!-- 当前月份 -->
+	<timestamp key="nowMonth" datePattern="yyyy-MM"/>
+	<!-- 当前日期 -->
+	<timestamp key="nowDay" datePattern="yyyy-MM-dd"/>
+	<!-- 日志记录位置 -->
+	<property name="loghome" value="E:/jps_log/${nowMonth}/${nowDay}/"/>
+	
+	<!-- 输出到控制台 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 输出到一个文件 -->
+	<appender name="file" class="ch.qos.logback.core.FileAppender">
+		<file>d:/jps.log</file>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 日志滚动输出到文件，保留30天 -->
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file></file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${loghome}logFile-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>90</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<!-- 大于${level}级别的将会输出到控制台 -->
+	<root level="debug">
+		<appender-ref ref="console"/>
+		<appender-ref ref="rollingFile"/>
+	</root>
+	
+</configuration>

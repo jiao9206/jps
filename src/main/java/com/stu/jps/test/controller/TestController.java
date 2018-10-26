@@ -27,7 +27,11 @@ public class TestController {
 		List<Test> list;
 		try {
 			list=testService.queryAll();
-			log.info("test logback:"+list);
+			log.trace("test logback trace:中文---------------------------------------------");
+			log.debug("test logback debug:中文---------------------------------------------");
+			log.info("test logback info:中文---------------------------------------------");
+			log.warn("test logback warn:中文---------------------------------------------");
+			log.error("test logback error:中文---------------------------------------------");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

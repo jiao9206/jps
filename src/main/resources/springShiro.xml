@@ -29,6 +29,7 @@
     	<property name="unauthorizedUrl" value="/user/noPermiss"></property>
     	<property name="filterChainDefinitions">
     		<value>
+    			/user/doLogin = anon
     			/** = authc
     		</value>
     	</property>

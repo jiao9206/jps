@@ -28,5 +28,7 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-		  
+		 
+	<!-- 启用默认servlet处理静态资源 -->
+	<mvc:default-servlet-handler/> 
 </beans>

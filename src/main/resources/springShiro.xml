@@ -29,7 +29,11 @@
     	<property name="unauthorizedUrl" value="/user/noPermiss"></property>
     	<property name="filterChainDefinitions">
     		<value>
+    			<!-- 登陆url -->
     			/user/doLogin = anon
+    			<!-- 静态资源 -->
+    			/views/common/** = anon
+    			<!-- 其他需要认证 -->
     			/** = authc
     		</value>
     	</property>

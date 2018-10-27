@@ -43,6 +43,15 @@
     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   	</listener>
   	
+  	<!-- 默认servlet处理静态资源 -->
+  	<servlet-mapping>
+  		<servlet-name>default</servlet-name>
+  		<url-pattern>*.js</url-pattern>
+  		<url-pattern>*.css</url-pattern>
+  		<url-pattern>*.jpg</url-pattern>
+  		<url-pattern>*.png</url-pattern>
+  	</servlet-mapping>
+  	
   	<!-- 加载springMVC -->
   	<servlet>
 	    <servlet-name>springMVC</servlet-name>

@@ -19,5 +19,8 @@
 		<div class="layui-col-md8"></div>
 		<div class="layui-col-md4"></div>
 	</div>
+	
+	<script type="text/javascript">
+	</script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <mapper namespace="com.stu.jps.user.dao.UserMapper">
 
 	<select id="queryUser" parameterType="string" resultType="user">
-		SELECT * FROM user WHERE user_name=#{username} AND pass_word=${password}
+		SELECT * FROM user WHERE user_name=#{username} AND pass_word=#{password}
 	</select>
 	
 </mapper>

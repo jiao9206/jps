@@ -47,29 +47,29 @@
 				<img alt="JiaoPeng" src="${path }/views/common/login/login01.png" style="margin-left: 100px;margin-top: -7px;">
 			</div>
 			<div class="layui-col-md5">
-				<form action="" class="layui-form">
+				<form class="layui-form">
 					<div style="border: 1px solid #DCDCDC;width:370px;">
 						<br/>
 						<div class="layui-form-item">
 							<label class="layui-form-label">用户名</label>
 							<div class="layui-input-block">
-								<input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input">
+								<input type="text" name="username" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<label class="layui-form-label">密码</label>
 							<div class="layui-input-block">
-								<input type="password" name="password" placeholder="请输入" autocomplete="off" class="layui-input">
+								<input type="password" name="password" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<div class="layui-input-block">
-								<input type="checkbox" name="remember" title="下次自动登陆">
+								<input type="checkbox" name="remember" lay-skin="primary" title="下次自动登陆">
 							</div>
 						</div>
 						<div class="layui-form-item">
 							<div class="layui-input-block">
-								<button class="layui-btn" lay-submit lay-filter="submit">登陆</button>
+								<button class="layui-btn" lay-submit lay-filter="submitBtn" onclick="return false;">登陆</button>
 								<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 							</div>
 						</div>
@@ -98,7 +98,28 @@
 	<script type="text/javascript">
 	layui.use(['layer','form'],function(){
 		var layer=layui.layer;
-		layer.msg("JiaoPeng");
+		var form=layui.form;
+		<%--监听提交按钮--%>
+		form.on('submit(submitBtn)',function(data){
+			var formDataStr=JSON.stringify(data.field);
+			$.ajax({
+				url:"${path}/user/doLogin",
+				type:"post",
+				dataType:"json",
+				data:{"formData":formDataStr},
+				success:function(e){
+					debugger
+					if(e.flag=='fail'){
+						layer.msg(e.msg);
+					}else{
+						location.href="${path}/user/loginSuccess";
+					}
+				},
+				error:function(e){
+					debugger
+				}
+			})
+		})
 	})
 	</script>
 </body>

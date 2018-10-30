@@ -221,6 +221,14 @@
       <artifactId>shiro-quartz</artifactId>
       <version>${shiro-version}</version>
     </dependency>
+    
+    <!-- JSON -->
+	<dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>fastjson</artifactId>
+	    <version>1.2.51</version>
+	</dependency>
+    
   </dependencies>
   <build>
     <finalName>jps</finalName>

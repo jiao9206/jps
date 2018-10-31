@@ -112,7 +112,7 @@
 					if(e.flag=='fail'){
 						layer.msg(e.msg);
 					}else{
-						location.href="${path}/user/loginSuccess";
+						location.href="${path}/user/main";
 					}
 				},
 				error:function(e){

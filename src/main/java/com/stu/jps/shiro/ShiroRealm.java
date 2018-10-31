@@ -1,14 +1,16 @@
 package com.stu.jps.shiro;
 
-import org.apache.shiro.SecurityUtils;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
@@ -32,7 +34,27 @@ public class ShiroRealm extends AuthorizingRealm{
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-		return null;
+		String username=((User)arg0.getPrimaryPrincipal()).getUser_name();
+		Set<String> role=new HashSet<String>();
+		Set<String> permiss=new HashSet<String>();
+		if("admin".equals(username)) {//admin拥护管理员权限
+			role.add("admin");
+			role.add("ordinary");
+			permiss.add("add");
+			permiss.add("delete");
+			permiss.add("edit");
+			permiss.add("view");
+		}else {
+			role.add("ordinary");
+			permiss.add("add");
+			permiss.add("delete");
+			permiss.add("edit");
+			permiss.add("view");
+		}
+		SimpleAuthorizationInfo o=new SimpleAuthorizationInfo();
+		o.setRoles(role);
+		o.setStringPermissions(permiss);
+		return o;
 	}
 
 	/**
@@ -54,7 +76,7 @@ public class ShiroRealm extends AuthorizingRealm{
 			//账户被锁定
 			throw new LockedAccountException();
 		}else {
-			return new SimpleAuthenticationInfo(username,password,getName());
+			return new SimpleAuthenticationInfo(user,password,getName());
 		}
 	}
 

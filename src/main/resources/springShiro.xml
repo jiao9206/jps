@@ -26,15 +26,23 @@
     	<property name="securityManager" ref="securityManager"></property>
     	<property name="loginUrl" value="/user/login"></property>
     	<property name="successUrl" value="/user/loginSuccess"></property>
-    	<property name="unauthorizedUrl" value="/user/noPermiss"></property>
+    	<property name="unauthorizedUrl" value="/user/noPermit"></property>
     	<property name="filterChainDefinitions">
     		<value>
-    			<!-- 登陆url -->
+    			<!-- 登陆地址无权限控制 -->
     			/user/doLogin = anon
-    			<!-- 静态资源 -->
+    			<!-- 静态资源无权限控制 -->
     			/views/common/** = anon
+    			<!-- 用户经过认证，并且拥有admin角色 -->
+    			/admin/** = authc,roles["admin"]
     			<!-- 其他需要认证 -->
     			/** = authc
+    			
+    			
+    			<!-- 
+    				认证过滤器：anon、authc,user
+    				授权过滤器：roles、perms  例：roles[admin]、roles["admin,vip"]、perms[add]、perms["add,delete"]
+    			 -->
     		</value>
     	</property>
     </bean>

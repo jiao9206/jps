@@ -9,3 +9,5 @@
 <!-- 引入layUI -->
 <script src="${path }/views/common/layui/layui.js"></script>
 <link rel="stylesheet" href="${path }/views/common/layui/css/layui.css">
+<!-- shiro jsp 标签 -->
+<%@ tagliburi="http://shiro.apache.org/tags" prefix="shiro" %>

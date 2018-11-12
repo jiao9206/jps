@@ -39,4 +39,10 @@ public class TestController {
 		}
 		return "result:"+list.toString();
 	}
+	
+	@RequestMapping("/activiti")
+	@ResponseBody
+	public String activiti() {
+		return "success";
+	}
 }

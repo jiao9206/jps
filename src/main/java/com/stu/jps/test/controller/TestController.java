@@ -63,7 +63,7 @@ public class TestController {
 	public String activiti() throws Exception{
 		ProcessInstance processInstance = null;
 		identityService.setAuthenticatedUserId("JiaoPeng");
-		processInstance=runtimeService.startProcessInstanceByKey("myProcess");
+		processInstance=runtimeService.startProcessInstanceByKey("PCApply");
 		String id=processInstance.getId();
 		System.out.println(id);
 		return "success";

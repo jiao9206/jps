@@ -1,5 +1,9 @@
 package com.stu.jps.test.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -42,7 +46,12 @@ public class TestController {
 	
 	@RequestMapping("/activiti")
 	@ResponseBody
-	public String activiti() {
+	public String activiti() throws Exception{
+//		ProcessInstance processInstance = null;
+//		identityService.setAuthenticatedUserId("JiaoPeng");
+//		processInstance=runtimeService.startProcessInstanceByKey("leave");
+//		String id=processInstance.getId();
+//		System.out.println(id);
 		return "success";
 	}
 }

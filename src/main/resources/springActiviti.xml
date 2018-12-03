@@ -19,14 +19,14 @@
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="databaseSchemaUpdate" value="true" />
 		<property name="jobExecutorActivate" value="false" />
+		<property name="deploymentResources" value="classpath*:activiti-bpmn/*.bpmn"/>
+		<property name="deploymentMode" value="single-resource" />
 	</bean>
 	
-	<!-- Activiti核心引擎 
 	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
 		<property name="processEngineConfiguration" ref="processEngineConfiguration"/>
-	</bean>-->
+	</bean>
 	
-	<!-- 七大服务类
 	<bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
 	<bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
 	<bean id="formService" factory-bean="processEngine" factory-method="getFormService"/>
@@ -34,5 +34,4 @@
 	<bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
 	<bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
 	<bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
-	 -->
 </beans>

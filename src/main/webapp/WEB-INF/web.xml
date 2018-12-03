@@ -37,6 +37,7 @@
 			classpath:spring.xml
 			classpath:springMybatis.xml
 			classpath:springShiro.xml
+			classpath:springActiviti.xml
 		</param-value>
 	</context-param>
 	<listener>

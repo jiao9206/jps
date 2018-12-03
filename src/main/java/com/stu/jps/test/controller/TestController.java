@@ -1,11 +1,14 @@
 package com.stu.jps.test.controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
+import org.activiti.engine.HistoryService;
+import org.activiti.engine.IdentityService;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.spring.ProcessEngineFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,17 @@ public class TestController {
 	@Autowired
 	private ITestService testService;
 	
+    @Autowired
+    private RuntimeService runtimeService;
+    @Autowired
+    private TaskService taskService;
+    @Autowired
+    private HistoryService historyService;
+    @Autowired
+    private RepositoryService repositoryService;
+    @Autowired
+    private IdentityService identityService;
+    
 	@RequestMapping("/testMethod")
 	@ResponseBody
 	public String test(String a) {
@@ -47,11 +61,11 @@ public class TestController {
 	@RequestMapping("/activiti")
 	@ResponseBody
 	public String activiti() throws Exception{
-//		ProcessInstance processInstance = null;
-//		identityService.setAuthenticatedUserId("JiaoPeng");
-//		processInstance=runtimeService.startProcessInstanceByKey("leave");
-//		String id=processInstance.getId();
-//		System.out.println(id);
+		ProcessInstance processInstance = null;
+		identityService.setAuthenticatedUserId("JiaoPeng");
+		processInstance=runtimeService.startProcessInstanceByKey("myProcess");
+		String id=processInstance.getId();
+		System.out.println(id);
 		return "success";
 	}
 }

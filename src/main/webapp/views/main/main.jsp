@@ -10,8 +10,9 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   <div class="layui-header">
-    <div class="layui-logo">工单管理系统</div>
+    <div class="layui-logo">技术演示系统</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
+    <%-- 
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="javascript:alert('开发中');">工单管理</a></li>
       <li class="layui-nav-item"><a href="javascript:alert('开发中');">报表管理</a></li>
@@ -25,6 +26,7 @@
         </dl>
       </li>
     </ul>
+    --%>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
@@ -44,9 +46,9 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">所有商品</a>
+          <a class="" href="javascript:;">Activiti</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">流程管理</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">列表三</a></dd>
             <dd><a href="">超链接</a></dd>
@@ -68,7 +70,9 @@
   
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">内容主体区域</div>
+    <div style="padding: 15px;width:1140px;height:530px;">
+    	<iframe src="https://www.baidu.com" style="width:100%;height:100%;" border="0" frameborder="0"  ></iframe>
+    </div>
   </div>
   
   <div class="layui-footer">

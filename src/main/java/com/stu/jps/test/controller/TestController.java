@@ -7,8 +7,7 @@ import org.activiti.engine.IdentityService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
-import org.activiti.engine.runtime.ProcessInstance;
-import org.activiti.spring.ProcessEngineFactoryBean;
+import org.activiti.engine.repository.ProcessDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,12 +59,28 @@ public class TestController {
 	
 	@RequestMapping("/activiti")
 	@ResponseBody
-	public String activiti() throws Exception{
-		ProcessInstance processInstance = null;
-		identityService.setAuthenticatedUserId("JiaoPeng");
-		processInstance=runtimeService.startProcessInstanceByKey("PCApply");
-		String id=processInstance.getId();
-		System.out.println(id);
+	public String activiti(){
+//		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("PCApply");
+//		Task task=taskService.createTaskQuery().taskCandidateUser("jiaopeng").singleResult();
+//		taskService.claim(task.getId(), "jiaopeng");
+//		taskService.complete(task.getId());
+		//创建用户
+//		User user=identityService.newUser("panxiaoyue");
+//		user.setFirstName("Pan");
+//		user.setLastName("XiaoYue");
+//		user.setEmail("931642903@qq.com");
+//		identityService.saveUser(user);
+		
+		//创建组
+//		Group group=identityService.newGroup("leader");
+//		group.setName("部门经理");
+//		group.setType("assignment");
+//		identityService.saveGroup(group);
+		
+		//建立用户和组之间的关系
+//		identityService.createMembership("panxiaoyue", "leader");
+		List<ProcessDefinition> list=repositoryService.createProcessDefinitionQuery().list();
+		
 		return "success";
 	}
 }

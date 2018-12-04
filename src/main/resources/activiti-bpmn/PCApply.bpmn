@@ -2,9 +2,9 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="PCApply" name="PC Apply" isExecutable="true">
     <startEvent id="start" name="Start"></startEvent>
-    <userTask id="leaderAudit" name="组长审核"></userTask>
+    <userTask id="leaderAudit" name="组长审核" activiti:candidateGroups="leader"></userTask>
     <sequenceFlow id="flow1" sourceRef="start" targetRef="leaderAudit"></sequenceFlow>
-    <userTask id="headAudit" name="主任审核"></userTask>
+    <userTask id="headAudit" name="主任审核" activiti:candidateUsers="jiaopeng,panxiaoyue"></userTask>
     <sequenceFlow id="flow2" sourceRef="leaderAudit" targetRef="headAudit"></sequenceFlow>
     <endEvent id="end" name="End"></endEvent>
     <sequenceFlow id="flow3" sourceRef="headAudit" targetRef="end"></sequenceFlow>

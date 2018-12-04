@@ -48,7 +48,7 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">Activiti</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">流程管理</a></dd>
+            <dd><a href="javascript:menuClick('${path }/activiti/processMgt');">流程管理</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">列表三</a></dd>
             <dd><a href="">超链接</a></dd>
@@ -71,7 +71,7 @@
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;width:1140px;height:530px;">
-    	<iframe src="https://www.baidu.com" style="width:100%;height:100%;" border="0" frameborder="0"  ></iframe>
+    	<iframe id="mainBody" src="https://www.baidu.com" style="width:100%;height:100%;" border="0" frameborder="0"  ></iframe>
     </div>
   </div>
   
@@ -86,6 +86,11 @@ layui.use('element', function(){
   var element = layui.element;
   
 });
+
+//菜单点击，跳转url
+function menuClick(url){
+	$("#mainBody").attr("src",url);
+}
 </script>
 </body>
 </html>

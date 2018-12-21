@@ -8,30 +8,88 @@
 <title>Process Mgt</title>
 </head>
 <body>
-<table id="tabled" lay-filter="test"></table>
-
+<div>
+	<button class="layui-btn layui-btn-sm">部署新流程</button>
+	<table id="tabled" lay-filter="test"></table>
+</div>
 <script type="text/javascript">
-layui.use("table",function(){
-	var table=layui.table;
+var table;
+var layer;
+layui.use(["table","layer"],function(){
+	table=layui.table;
+	layer=layui.layer;
 	table.render({
 		elem:"#tabled",
-		height:500,
+		height:480,
 		url:"${path}/activiti/queryProcessList",
 		page:true,
-		limit:10,
-		limits:[1,10,20,50],
+		limit:5,
+		limits:[5,10,20,50],
 		cols:[[
 			{field: 'id', title: '流程定义ID'},
 			{field: 'deploymentId', title: '部署ID'},
 			{field: 'name', title: '流程定义名称'},
 			{field: 'key', title: '流程定义KEY'},
 			{field: 'version', title: '版本号'},
-			{field: 'resourceName', title: 'XML资源名称'},
-			{field: 'diagramResourceName', title: '图片资源名称'},
-			{field: 'operate', title: '操作'}
+			<%--
+			{field: 'resourceName', title: 'XML资源'},
+			{field: 'diagramResourceName', title: '图片资源'},
+			--%>
+			{field: 'operate', title: '操作',templet:function(e){
+				var resourceName=e.resourceName.replace(/\\/g,',');
+				var diagramResourceName=e.diagramResourceName.replace(/\\/g,',');
+				var id=e.id;
+				return "<a class='layui-btn layui-btn-sm' onclick=\"viewXml('"+id+"','"+resourceName+"')\">XML</a>"+
+					   "<a class='layui-btn layui-btn-sm' onclick=\"viewPic('"+id+"','"+diagramResourceName+"')\">PIC</a>"+
+					   "<a class='layui-btn layui-btn-sm' onclick=\"delProcess('"+e.deploymentId+"')\">DEL</a>";
+			}}
 		]]
-	})
+	});
 })
+/**
+ * 查看xml资源
+ */
+function viewXml(id,resourceName){
+	layer.open({
+		title:"View XML",
+		type:2,
+		area:["800px","400px"],
+		content:"${path}/activiti/viewXml?id="+id+"&resourceName="+resourceName
+	})
+}
+/**
+ * 查看图片资源
+ */
+function viewPic(id,diagramResourceName){
+	layer.open({
+		title:"View XML",
+		type:2,
+		area:["800px","400px"],
+		content:"${path}/activiti/viewXml?id="+id+"&diagramResourceName="+diagramResourceName
+	})
+}
+/**
+ * 删除部署
+ */
+function delProcess(deploymentId){
+	layer.confirm("Are youe sure?",function(e){
+		$.ajax({
+			url:"${path}/activiti/delProcess",
+			data:{"deploymentId":deploymentId},
+			dataType:"json",
+			success:function(e){
+				if(e.flag){
+					layer.msg("SUCCESS!");
+				}else{
+					layer.msg(flag.message);
+				}
+			},
+			error:function(e){
+				layer.msg("System Exception!");
+			}
+		})
+	})
+}
 </script>
 </body>
 </html>

@@ -71,7 +71,7 @@
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;width:1140px;height:530px;">
-    	<iframe id="mainBody" src="https://www.baidu.com" style="width:100%;height:100%;" border="0" frameborder="0"  ></iframe>
+    	<iframe id="mainBody" src="" style="width:100%;height:100%;" border="0" frameborder="0"  ></iframe>
     </div>
   </div>
   

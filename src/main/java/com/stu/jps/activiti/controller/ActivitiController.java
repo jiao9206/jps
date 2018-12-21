@@ -96,9 +96,16 @@ public class ActivitiController {
 	@RequestMapping("/delProcess")
 	@ResponseBody
 	public Map<String,Object> delProcess(String deploymentId) {
-		repositoryService.deleteDeployment(deploymentId,true);
 		Map<String,Object> result=new HashMap<String,Object>();
-		result.put("flag", true);
+		try {
+			repositoryService.deleteDeployment(deploymentId,true);
+			result.put("flag", true);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result.put("flag", false);
+			result.put("message", "System Exception!");
+			return result;
+		}
 		return result;
 	}
 }

@@ -20,6 +20,7 @@ layui.use(["table","layer"],function(){
 	layer=layui.layer;
 	table.render({
 		elem:"#tabled",
+		id:"list",
 		height:480,
 		url:"${path}/activiti/queryProcessList",
 		page:true,
@@ -47,6 +48,21 @@ layui.use(["table","layer"],function(){
 	});
 })
 /**
+ * 刷新列表
+ */
+function reload(){
+	table.reload("list",{
+		page:{
+			curr:1
+		},
+		where:{
+			key:{
+				test:"test"
+			}
+		}
+	})
+}
+/**
  * 查看xml资源
  */
 function viewXml(id,resourceName){
@@ -62,10 +78,10 @@ function viewXml(id,resourceName){
  */
 function viewPic(id,diagramResourceName){
 	layer.open({
-		title:"View XML",
+		title:"View Pic",
 		type:2,
 		area:["800px","400px"],
-		content:"${path}/activiti/viewXml?id="+id+"&diagramResourceName="+diagramResourceName
+		content:"${path}/activiti/viewPic?id="+id+"&diagramResourceName="+diagramResourceName
 	})
 }
 /**
@@ -80,6 +96,7 @@ function delProcess(deploymentId){
 			success:function(e){
 				if(e.flag){
 					layer.msg("SUCCESS!");
+					reload();
 				}else{
 					layer.msg(flag.message);
 				}

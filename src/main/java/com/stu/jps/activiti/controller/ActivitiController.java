@@ -26,7 +26,7 @@ public class ActivitiController {
     private RepositoryService repositoryService;
     
 	/**
-	 * Á÷³Ì¹ÜÀíµ¼º½
+	 * æµç¨‹ç®¡ç†å¯¼èˆª
 	 * @return
 	 */
 	@RequestMapping("/processMgt")
@@ -36,7 +36,7 @@ public class ActivitiController {
 	}
 	
 	/**
-	 * ²éÑ¯ÒÑ¾­²¿ÊğµÄÁ÷³Ì
+	 * æŸ¥è¯¢å·²ç»éƒ¨ç½²çš„æµç¨‹
 	 */
 	@RequestMapping("/queryProcessList")
 	@ResponseBody
@@ -63,7 +63,7 @@ public class ActivitiController {
 	}
 	
 	/**
-	 * ²éÑ¯Á÷³Ì¶¨Òåxml
+	 * æŸ¥çœ‹XMLèµ„æº
 	 * @param id
 	 * @param resourceName
 	 * @param rep
@@ -89,7 +89,7 @@ public class ActivitiController {
 		
 	}
 	/**
-	 * É¾³ıÒÑ¾­²¿ÊğµÄÁ÷³Ì
+	 * åˆ é™¤å·²ç»éƒ¨ç½²çš„æµç¨‹
 	 * @param deploymentId
 	 * @return
 	 */

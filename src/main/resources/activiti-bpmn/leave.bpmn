@@ -10,9 +10,9 @@
     </startEvent>
     <userTask id="leaderAudit" name="部门领导审批" activiti:candidateUsers="jiaopeng">
       <extensionElements>
-        <activiti:formProperty id="startDate" name="请假开始日期" type="date" datePattern="yyyy-MM-dd" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="endDate" name="请假结束日期" type="date" datePattern="yyyy-MM-dd" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="reason" name="请假原因" type="string" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="startDate" name="请假开始日期" type="date" datePattern="yyyy-MM-dd" readable="false" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="endDate" name="请假结束日期" type="date" datePattern="yyyy-MM-dd" readable="false" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="reason" name="请假原因" type="string" readable="false" writable="false"></activiti:formProperty>
         <activiti:formProperty id="leaderApprove" name="审批意见" type="enum" required="true">
           <activiti:value id="true" name="同意"></activiti:value>
           <activiti:value id="false" name="拒绝"></activiti:value>
@@ -24,9 +24,9 @@
     <sequenceFlow id="flow2" sourceRef="leaderAudit" targetRef="exclusivegateway1"></sequenceFlow>
     <userTask id="hrAudit" name="人事审批" activiti:assignee="panxiaoyue">
       <extensionElements>
-        <activiti:formProperty id="startDate" name="请假开始日期" type="date" datePattern="yyyy-MM-dd" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="endDate" name="请假结束日期" type="date" datePattern="yyyy-MM-dd" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="reason" name="请假原因" type="string" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="startDate" name="请假开始日期" type="date" datePattern="yyyy-MM-dd" readable="false" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="endDate" name="请假结束日期" type="date" datePattern="yyyy-MM-dd" readable="false" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="reason" name="请假原因" type="string" readable="false" writable="false"></activiti:formProperty>
         <activiti:formProperty id="hrApprove" name="审批意见" type="enum" required="true">
           <activiti:value id="true" name="同意"></activiti:value>
           <activiti:value id="false" name="拒绝"></activiti:value>
@@ -54,9 +54,9 @@
     <sequenceFlow id="flow5" sourceRef="hrAudit" targetRef="exclusivegateway2"></sequenceFlow>
     <userTask id="reportBack" name="本人销假" activiti:assignee="startUserId">
       <extensionElements>
-        <activiti:formProperty id="startDate" name="请假开始日期" type="date" datePattern="yyyy-MM-dd" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="endDate" name="请假结束日期" type="date" datePattern="yyyy-MM-dd" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="reason" name="请假原因" type="string" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="startDate" name="请假开始日期" type="date" datePattern="yyyy-MM-dd" readable="false" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="endDate" name="请假结束日期" type="date" datePattern="yyyy-MM-dd" readable="false" writable="false"></activiti:formProperty>
+        <activiti:formProperty id="reason" name="请假原因" type="string" readable="false" writable="false"></activiti:formProperty>
         <activiti:formProperty id="reportBackDate" name="销假日期" type="date" datePattern="yyyy-MM-dd" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>

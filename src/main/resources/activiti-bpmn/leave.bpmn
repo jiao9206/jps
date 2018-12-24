@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="leave" name="事假" isExecutable="true">
-    <startEvent id="startevent1" name="Start" activiti:initiator="startUserId">
+    <startEvent id="startevent1" name="开始" activiti:initiator="startUserId">
       <extensionElements>
         <activiti:formProperty id="startDate" name="请假开始日期" type="date" datePattern="yyyy-MM-dd" required="true"></activiti:formProperty>
         <activiti:formProperty id="endDate" name="请假结束日期" type="date" datePattern="yyyy-MM-dd" required="true"></activiti:formProperty>
@@ -20,7 +20,7 @@
       </extensionElements>
     </userTask>
     <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="leaderAudit"></sequenceFlow>
-    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <exclusiveGateway id="exclusivegateway1"></exclusiveGateway>
     <sequenceFlow id="flow2" sourceRef="leaderAudit" targetRef="exclusivegateway1"></sequenceFlow>
     <userTask id="hrAudit" name="人事审批" activiti:assignee="panxiaoyue">
       <extensionElements>
@@ -50,7 +50,7 @@
     <sequenceFlow id="flow4" name="拒绝" sourceRef="exclusivegateway1" targetRef="modifyApply">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${leaderApprove == false}]]></conditionExpression>
     </sequenceFlow>
-    <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
+    <exclusiveGateway id="exclusivegateway2"></exclusiveGateway>
     <sequenceFlow id="flow5" sourceRef="hrAudit" targetRef="exclusivegateway2"></sequenceFlow>
     <userTask id="reportBack" name="本人销假" activiti:assignee="startUserId">
       <extensionElements>
@@ -66,12 +66,12 @@
     <sequenceFlow id="flow7" name="拒绝" sourceRef="exclusivegateway2" targetRef="modifyApply">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${hrApprove == false}]]></conditionExpression>
     </sequenceFlow>
-    <exclusiveGateway id="exclusivegateway3" name="Exclusive Gateway"></exclusiveGateway>
+    <exclusiveGateway id="exclusivegateway3"></exclusiveGateway>
     <sequenceFlow id="flow8" sourceRef="modifyApply" targetRef="exclusivegateway3"></sequenceFlow>
     <sequenceFlow id="flow9" name="重新申请" sourceRef="exclusivegateway3" targetRef="leaderAudit">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${reApply == true}]]></conditionExpression>
     </sequenceFlow>
-    <endEvent id="endevent1" name="End"></endEvent>
+    <endEvent id="endevent1" name="结束"></endEvent>
     <sequenceFlow id="flow10" name="销假" sourceRef="reportBack" targetRef="endevent1">
       <extensionElements>
         <activiti:executionListener event="take" expression="${execution.setVariable('result','ok')}"></activiti:executionListener>

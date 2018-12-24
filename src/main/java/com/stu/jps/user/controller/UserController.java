@@ -1,10 +1,8 @@
 package com.stu.jps.user.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.stu.jps.user.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -16,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.stu.jps.user.service.IUserService;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -27,7 +25,7 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 	/**
-	 * µÇÂ½Ò³Ãæ
+	 * ç™»é™†é¡µé¢å¯¼èˆª
 	 * @return
 	 */
 	@RequestMapping("/login")
@@ -35,7 +33,7 @@ public class UserController {
 		return new ModelAndView("login/login");
 	}
 	/**
-	 * µÇÂ½ÈÏÖ¤
+	 * ï¿½ï¿½Â½ï¿½ï¿½Ö¤
 	 * @return
 	 */
 	@RequestMapping("/doLogin")
@@ -49,15 +47,15 @@ public class UserController {
 			Subject subject=SecurityUtils.getSubject();
 			UsernamePasswordToken token=new UsernamePasswordToken(username,password);
 			subject.login(token);
-			//µÇÂ½³É¹¦ºó£¬½«ÓÃ»§ĞÅÏ¢·ÅÔÚsessionÖĞ
+			//ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ó£¬½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½
 			req.getSession().setAttribute("user", userService.queryUser(username, password));
 		}catch(IncorrectCredentialsException e) {
-			//ÃÜÂë´íÎó
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			m.put("flag", "fail");
 			m.put("msg", "Password Erro !");
 			return m;
 		}catch(LockedAccountException e) {
-			//ÕË»§±»Ëø¶¨
+			//ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			m.put("flag", "fail");
 			m.put("msg", "Account Locked !");
 			return m;
@@ -70,7 +68,7 @@ public class UserController {
 		return m;
 	}
 	/**
-	 * µÇÂ½³É¹¦ºó£¬Ìø×ªÖ÷Ò³
+	 * ï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ò³
 	 * @return
 	 */
 	@RequestMapping("/main")
@@ -79,7 +77,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ÍË³ö
+	 * ï¿½Ë³ï¿½
 	 * @return
 	 */
 	@RequestMapping("/logout")
@@ -91,7 +89,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ÎŞÈ¨ÏŞÌáÊ¾Ò³Ãæ
+	 * ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½Ê¾Ò³ï¿½ï¿½
 	 * @return
 	 */
 	@RequestMapping("/noPermit")

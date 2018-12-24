@@ -5,7 +5,7 @@ import com.stu.jps.user.entity.User;
 public interface IUserService {
 
 	/**
-	 * 根据用户名和密码查询是否存在此用户
+	 * 鏌ヨ鐢ㄦ埛
 	 * @param username
 	 * @param password
 	 * @return

@@ -10,9 +10,7 @@ import com.stu.jps.user.entity.User;
 public interface UserMapper {
 
 	/**
-	 * 根据用户名密码查询用户实体
-	 * @param username
-	 * @param password
+	 * 鏌ヨ鐢ㄦ埛
 	 * @return
 	 */
 	User queryUser(Map map);

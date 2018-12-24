@@ -30,14 +30,14 @@ public class ShiroRealm extends AuthorizingRealm{
 	private IUserService userService;
 	
 	/**
-	 * ½ÇÉ«ºÍÈ¨ÏŞ
+	 * æƒé™è®¤è¯
 	 */
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
 		String username=((User)arg0.getPrimaryPrincipal()).getUser_name();
 		Set<String> role=new HashSet<String>();
 		Set<String> permiss=new HashSet<String>();
-		if("admin".equals(username)) {//adminÓµ»¤¹ÜÀíÔ±È¨ÏŞ
+		if("admin".equals(username)) {//ADMINè§’è‰²
 			role.add("admin");
 			role.add("ordinary");
 			permiss.add("add");
@@ -58,7 +58,7 @@ public class ShiroRealm extends AuthorizingRealm{
 	}
 
 	/**
-	 * µÇÂ½ÈÏÖ¤
+	 * ç™»é™†è®¤è¯
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
@@ -67,13 +67,11 @@ public class ShiroRealm extends AuthorizingRealm{
 		User user=userService.queryUser(username, password);
 		if(user==null) {
 			log.debug("no user:"+username);
-			//ÓÃ»§²»´æÔÚ
 			//throw new UnknownAccountException();
-			//ÓÃ»§ÃûÃÜÂë²»Æ¥Åä
 			throw new IncorrectCredentialsException();
 		}else if("1".equals(user.getStatus())) {
 			log.debug("user:"+username+" is locked!");
-			//ÕË»§±»Ëø¶¨
+			//è´¦æˆ·è¢«é”å®š
 			throw new LockedAccountException();
 		}else {
 			return new SimpleAuthenticationInfo(user,password,getName());

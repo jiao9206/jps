@@ -44,11 +44,11 @@ public class TestController {
 		List<Test> list;
 		try {
 			list=testService.queryAll();
-			log.trace("test logback trace:中文---------------------------------------------");
-			log.debug("test logback debug:中文---------------------------------------------");
-			log.info("test logback info:中文---------------------------------------------");
-			log.warn("test logback warn:中文---------------------------------------------");
-			log.error("test logback error:中文---------------------------------------------");
+			log.trace("test logback trace:---------------------------------------------");
+			log.debug("test logback debug:---------------------------------------------");
+			log.info("test logback info:---------------------------------------------");
+			log.warn("test logback warn:---------------------------------------------");
+			log.error("test logback error:---------------------------------------------");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,20 +64,20 @@ public class TestController {
 //		Task task=taskService.createTaskQuery().taskCandidateUser("jiaopeng").singleResult();
 //		taskService.claim(task.getId(), "jiaopeng");
 //		taskService.complete(task.getId());
-		//创建用户
+		
 //		User user=identityService.newUser("panxiaoyue");
 //		user.setFirstName("Pan");
 //		user.setLastName("XiaoYue");
 //		user.setEmail("931642903@qq.com");
 //		identityService.saveUser(user);
 		
-		//创建组
+		
 //		Group group=identityService.newGroup("leader");
-//		group.setName("部门经理");
+//		group.setName("锟斤拷锟脚撅拷锟斤拷");
 //		group.setType("assignment");
 //		identityService.saveGroup(group);
 		
-		//建立用户和组之间的关系
+		
 //		identityService.createMembership("panxiaoyue", "leader");
 		List<ProcessDefinition> list=repositoryService.createProcessDefinitionQuery().list();
 		

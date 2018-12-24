@@ -1,10 +1,8 @@
 package com.stu.jps.user.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.stu.jps.user.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -16,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.stu.jps.user.service.IUserService;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -27,7 +25,7 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 	/**
-	 * µÇÂ½Ò³Ãæ
+	 * ç™»é™†é¡µé¢å¯¼èˆª
 	 * @return
 	 */
 	@RequestMapping("/login")
@@ -35,7 +33,7 @@ public class UserController {
 		return new ModelAndView("login/login");
 	}
 	/**
-	 * µÇÂ½ÈÏÖ¤
+	 * ç™»é™†
 	 * @return
 	 */
 	@RequestMapping("/doLogin")
@@ -49,15 +47,15 @@ public class UserController {
 			Subject subject=SecurityUtils.getSubject();
 			UsernamePasswordToken token=new UsernamePasswordToken(username,password);
 			subject.login(token);
-			//µÇÂ½³É¹¦ºó£¬½«ÓÃ»§ĞÅÏ¢·ÅÔÚsessionÖĞ
+			//ç™»é™†æˆåŠŸï¼Œå°†ç”¨æˆ·ä¿¡æ¯æ”¾åœ¨sessionä¸­
 			req.getSession().setAttribute("user", userService.queryUser(username, password));
 		}catch(IncorrectCredentialsException e) {
-			//ÃÜÂë´íÎó
+			//å¯†ç é”™è¯¯
 			m.put("flag", "fail");
 			m.put("msg", "Password Erro !");
 			return m;
 		}catch(LockedAccountException e) {
-			//ÕË»§±»Ëø¶¨
+			//è´¦æˆ·è¢«é”å®š
 			m.put("flag", "fail");
 			m.put("msg", "Account Locked !");
 			return m;
@@ -70,7 +68,7 @@ public class UserController {
 		return m;
 	}
 	/**
-	 * µÇÂ½³É¹¦ºó£¬Ìø×ªÖ÷Ò³
+	 * ä¸»é¡µ
 	 * @return
 	 */
 	@RequestMapping("/main")
@@ -79,7 +77,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ÍË³ö
+	 * ç­‰å‡º
 	 * @return
 	 */
 	@RequestMapping("/logout")
@@ -91,7 +89,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ÎŞÈ¨ÏŞÌáÊ¾Ò³Ãæ
+	 * æ— æƒé™å¯¼èˆªé¡µé¢
 	 * @return
 	 */
 	@RequestMapping("/noPermit")

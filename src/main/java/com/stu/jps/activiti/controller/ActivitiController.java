@@ -75,18 +75,43 @@ public class ActivitiController {
 			ProcessDefinitionQuery pdq=repositoryService.createProcessDefinitionQuery();
 			ProcessDefinition pd=pdq.processDefinitionId(id).singleResult();
 			InputStream in=repositoryService.getResourceAsStream(pd.getDeploymentId(), resourceName);
-			OutputStream out=rep.getOutputStream();
+			StringBuffer sb=new StringBuffer();
 			byte[] b=new byte[1024];
 			int len=-1;
-			while((len=in.read(b, 0, 1024))!=-1) {
-				out.write(b, 0, len);
+			while((len=in.read(b))!=-1) {
+				sb.append(new String(b,0,len));
 			}
+			String xmlStr=sb.toString();
+			rep.getWriter().write("#");
+			rep.getWriter().write(xmlStr);
 			in.close();
-			out.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
+	}
+	/**
+	 * 查看图片资源
+	 * @param id
+	 * @param diagramResourceName
+	 * @param rep
+	 */
+	@RequestMapping("/viewPic")
+	public void viewPic(String id,String diagramResourceName,HttpServletResponse rep) {
+		try {
+			diagramResourceName=diagramResourceName.replaceAll(",", "\\\\");
+			ProcessDefinitionQuery pdq=repositoryService.createProcessDefinitionQuery();
+			ProcessDefinition pd=pdq.processDefinitionId(id).singleResult();
+			InputStream in=repositoryService.getResourceAsStream(pd.getDeploymentId(), diagramResourceName);
+			byte[] b=new byte[1024];
+			int len=-1;
+			while((len=in.read(b,0,1024))!=-1) {
+				rep.getOutputStream().write(b,0,len);
+			}
+			in.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	/**
 	 * 删除已经部署的流程

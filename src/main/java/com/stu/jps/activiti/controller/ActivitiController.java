@@ -1,7 +1,6 @@
 package com.stu.jps.activiti.controller;
 
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,12 +17,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.stu.jps.activiti.dao.ActivitiMapper;
+import com.stu.jps.activiti.entity.Leave;
+import com.stu.jps.activiti.service.IActivitiService;
+
 @Controller
 @RequestMapping("/activiti")
 public class ActivitiController {
 
     @Autowired
     private RepositoryService repositoryService;
+    
+    @Autowired
+    private IActivitiService activitiService;
+    
     
 	/**
 	 * 流程管理导航
@@ -132,5 +139,10 @@ public class ActivitiController {
 			return result;
 		}
 		return result;
+	}
+	
+	
+	public void test() {
+		
 	}
 }

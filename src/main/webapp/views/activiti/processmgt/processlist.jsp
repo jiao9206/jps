@@ -42,7 +42,8 @@ layui.use(["table","layer"],function(){
 				var id=e.id;
 				return "<a class='layui-btn layui-btn-sm' onclick=\"viewXml('"+id+"','"+resourceName+"')\">XML</a>"+
 					   "<a class='layui-btn layui-btn-sm' onclick=\"viewPic('"+id+"','"+diagramResourceName+"')\">PIC</a>"+
-					   "<a class='layui-btn layui-btn-sm' onclick=\"delProcess('"+e.deploymentId+"')\">DEL</a>";
+					   "<a class='layui-btn layui-btn-sm' onclick=\"delProcess('"+e.deploymentId+"')\">DEL</a>"+
+					   "<a class='layui-btn layui-btn-sm' onclick=\"startProcess('"+e.id+"')\">START</a>";
 			}}
 		]]
 	});
@@ -106,6 +107,12 @@ function delProcess(deploymentId){
 			}
 		})
 	})
+}
+/**
+ * 开启一个新流程
+ */
+function startProcess(id){
+	
 }
 </script>
 </body>

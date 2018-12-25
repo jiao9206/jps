@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.stu.jps.activiti.dao.ActivitiMapper">
+
+	<resultMap type="com.stu.jps.activiti.entity.Leave" id="leave">
+		<id column="ID" jdbcType="VARCHAR" property="id"/>
+		<result column="PROCESS_INSTANCE_ID" jdbcType="VARCHAR" property="processInstanceId"/>
+		<result column="USER_ID" jdbcType="VARCHAR" property="userId"/>
+		<result column="START_TIME" jdbcType="VARCHAR" property="startTime"/>
+		<result column="END_TIME" jdbcType="VARCHAR" property="endTime"/>
+		<result column="LEAVE_TYPE" jdbcType="VARCHAR" property="leaveType"/>
+		<result column="REASON" jdbcType="VARCHAR" property="reason"/>
+		<result column="APPLY_TIME" jdbcType="VARCHAR" property="applyTime"/>
+		<result column="REALITY_START_TIME" jdbcType="VARCHAR" property="realityStartTime"/>
+		<result column="REALITY_END_TIME" jdbcType="VARCHAR" property="realityEndTime"/>
+	</resultMap>
+	
+	<select id="get" parameterType="string" resultMap="leave">
+		SELECT * FROM t_jps_leave where ID=#{id}
+	</select>
+	
+</mapper>
+
+   
+   

@@ -9,7 +9,6 @@
 </head>
 <body>
 <div>
-	<button class="layui-btn layui-btn-sm">部署新流程</button>
 	<table id="tabled" lay-filter="test"></table>
 </div>
 <script type="text/javascript">
@@ -22,28 +21,23 @@ layui.use(["table","layer"],function(){
 		elem:"#tabled",
 		id:"list",
 		height:480,
-		url:"${path}/activiti/queryProcessList",
+		url:"${path}/activiti/queryTodoList",
 		page:true,
 		limit:5,
 		limits:[5,10,20,50],
 		cols:[[
-			{field: 'id', title: '流程定义ID'},
-			{field: 'deploymentId', title: '部署ID',width:100},
-			{field: 'name', title: '流程定义名称'},
-			{field: 'key', title: '流程定义KEY',width:150},
-			{field: 'version', title: '版本号',width:80},
-			<%--
-			{field: 'resourceName', title: 'XML资源'},
-			{field: 'diagramResourceName', title: '图片资源'},
-			--%>
+			{field: 'userId', title: '申请人'},
+			{field: 'leaveType', title: '类型'},
+			{field: 'startTime', title: '开始时间'},
+			{field: 'endTime', title: '结束时间'},
+			{field: 'reason', title: '请假原因'},
+			{field: '', title: '任务ID'},
+			{field: '', title: '任务名称'},
+			{field: '', title: '流程实例ID'},
+			{field: '', title: '流程定义ID'},
+			{field: 'applyTime', title: '申请时间'},
 			{field: 'operate', title: '操作',templet:function(e){
-				var resourceName=e.resourceName.replace(/\\/g,',');
-				var diagramResourceName=e.diagramResourceName.replace(/\\/g,',');
-				var id=e.id;
-				return "<a class='layui-btn layui-btn-sm' onclick=\"viewXml('"+id+"','"+resourceName+"')\">XML</a>"+
-					   "<a class='layui-btn layui-btn-sm' onclick=\"viewPic('"+id+"','"+diagramResourceName+"')\">PIC</a>"+
-					   "<a class='layui-btn layui-btn-sm' onclick=\"delProcess('"+e.deploymentId+"')\">DEL</a>"+
-					   "<a class='layui-btn layui-btn-sm' onclick=\"startProcess('"+e.id+"')\">START</a>";
+				debugger
 			}}
 		]]
 	});

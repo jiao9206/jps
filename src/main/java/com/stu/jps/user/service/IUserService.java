@@ -1,5 +1,7 @@
 package com.stu.jps.user.service;
 
+import java.util.Map;
+
 import com.stu.jps.user.entity.User;
 
 public interface IUserService {
@@ -11,4 +13,6 @@ public interface IUserService {
 	 * @return
 	 */
 	User queryUser(String username,String password);
+	
+
 }

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.activiti.engine.RepositoryService;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.stu.jps.activiti.dao.ActivitiMapper;
 import com.stu.jps.activiti.entity.Leave;
 import com.stu.jps.activiti.service.IActivitiService;
 
@@ -42,6 +42,15 @@ public class ActivitiController {
 		return mv;
 	}
 	
+	/**
+	 * 待办事项
+	 * @return
+	 */
+	@RequestMapping("/todo")
+	public ModelAndView todo() {
+		ModelAndView mv=new ModelAndView("/activiti/processmgt/todoList");
+		return mv;
+	}
 	/**
 	 * 查询已经部署的流程
 	 */
@@ -69,6 +78,24 @@ public class ActivitiController {
 		return resultMap;
 	}
 	
+	
+	/**
+	 * 查询待办列表
+	 * @param page
+	 * @param limit
+	 * @return
+	 */
+	@RequestMapping("/queryTodoList")
+	@ResponseBody
+	public Map<String,Object>  queryTodoList(int page,int limit,HttpServletRequest req){
+		Map<String,Object> result=new HashMap<String,Object>();
+		try {
+			result=activitiService.queryToDoList(page, limit,req);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	/**
 	 * 查看XML资源
 	 * @param id
@@ -141,8 +168,34 @@ public class ActivitiController {
 		return result;
 	}
 	
+	/**
+	 * 流程开启页面
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/createPage")
+	public ModelAndView createPage(String id) {
+		ModelAndView mv=new ModelAndView("/activiti/processmgt/leave_create");
+		mv.addObject("id",id);
+		return mv;
+	}
 	
-	public void test() {
-		
+	/**
+	 * 开启流程
+	 * @param leave
+	 * @return
+	 */
+	@RequestMapping("/createAndSend")
+	@ResponseBody
+	public Map<String,Object> createAndSend(Leave leave,HttpServletRequest req){
+		Map<String,Object> result=new HashMap<String,Object>();
+		try {
+			activitiService.saveAndSend(leave, req);
+			result.put("flag", true);
+		}catch(Exception e) {
+			result.put("flag", false);
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

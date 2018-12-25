@@ -8,19 +8,58 @@
 		<id column="ID" jdbcType="VARCHAR" property="id"/>
 		<result column="PROCESS_INSTANCE_ID" jdbcType="VARCHAR" property="processInstanceId"/>
 		<result column="USER_ID" jdbcType="VARCHAR" property="userId"/>
-		<result column="START_TIME" jdbcType="VARCHAR" property="startTime"/>
-		<result column="END_TIME" jdbcType="VARCHAR" property="endTime"/>
+		<result column="START_TIME" jdbcType="DATE" property="startTime"/>
+		<result column="END_TIME" jdbcType="DATE" property="endTime"/>
 		<result column="LEAVE_TYPE" jdbcType="VARCHAR" property="leaveType"/>
 		<result column="REASON" jdbcType="VARCHAR" property="reason"/>
-		<result column="APPLY_TIME" jdbcType="VARCHAR" property="applyTime"/>
-		<result column="REALITY_START_TIME" jdbcType="VARCHAR" property="realityStartTime"/>
-		<result column="REALITY_END_TIME" jdbcType="VARCHAR" property="realityEndTime"/>
+		<result column="APPLY_TIME" jdbcType="DATE" property="applyTime"/>
+		<result column="REALITY_START_TIME" jdbcType="DATE" property="realityStartTime"/>
+		<result column="REALITY_END_TIME" jdbcType="DATE" property="realityEndTime"/>
 	</resultMap>
 	
+	<parameterMap type="com.stu.jps.activiti.entity.Leave" id="leaveP">
+		<parameter property="id" resultMap="leave"/>
+		<parameter property="processInstanceId" resultMap="leave"/>
+		<parameter property="userId" resultMap="leave"/>
+		<parameter property="startTime" resultMap="leave"/>
+		<parameter property="endTime" resultMap="leave"/>
+		<parameter property="leaveType" resultMap="leave"/>
+		<parameter property="reason" resultMap="leave"/>
+		<parameter property="applyTime" resultMap="leave"/>
+		<parameter property="realityStartTime" resultMap="leave"/>
+		<parameter property="realityEndTime" resultMap="leave"/>
+	</parameterMap>
 	<select id="get" parameterType="string" resultMap="leave">
 		SELECT * FROM t_jps_leave where ID=#{id}
 	</select>
 	
+	<insert id="save" parameterMap="leaveP">
+		INSERT INTO t_jps_leave (
+			ID,
+			PROCESS_INSTANCE_ID,
+			USER_ID,
+			START_TIME,
+			END_TIME,
+			LEAVE_TYPE,
+			REASON,
+			APPLY_TIME,
+			REALITY_START_TIME,
+			REALITY_END_TIME
+		)
+		VALUES
+			(
+			#{id},
+			#{processInstanceId},
+			#{userId},
+			#{startTime},
+			#{endTime},
+			#{leaveType},
+			#{reason},
+			#{applyTime},
+			#{realityStartTime},
+			#{realityEndTime}
+			)
+	</insert>
 </mapper>
 
    

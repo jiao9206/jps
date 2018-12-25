@@ -13,4 +13,9 @@ public interface ActivitiMapper {
 	 * @return
 	 */
 	public Leave get(String id);
+	/**
+	 * 保存数据
+	 * @param leave
+	 */
+	public void save(Leave leave);
 }

@@ -5,7 +5,7 @@
 <head>
 <%@include file="/views/common/common.jsp"  %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TaskCare</title>
+<title>JPS</title>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -49,7 +49,7 @@
           <a class="" href="javascript:;">Activiti</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:menuClick('${path }/activiti/processMgt');">流程管理</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="javascript:menuClick('${path }/activiti/todo');">待办事项</a></dd>
             <dd><a href="javascript:;">列表三</a></dd>
             <dd><a href="">超链接</a></dd>
           </dl>

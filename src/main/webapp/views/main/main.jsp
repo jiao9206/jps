@@ -50,8 +50,7 @@
           <dl class="layui-nav-child">
             <dd><a href="javascript:menuClick('${path }/activiti/processMgt');">流程管理</a></dd>
             <dd><a href="javascript:menuClick('${path }/activiti/todo');">待办事项</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
-            <dd><a href="">超链接</a></dd>
+            <dd><a href="javascript:;">已办事项</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">

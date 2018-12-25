@@ -11,19 +11,19 @@
 <div class="layui-form" style="width:85%;margin-top: 30px;">
 	<input type="text" class="layui-input" value="${id}" name="processInstanceId" style="display: none"/>
 	<div class="layui-form-item">
-		<label class="layui-form-label">开始时间</label>
+		<label class="layui-form-label">开始时间<span style="color:red">*</span></label>
 		<div class="layui-input-block">
 			<input lay-verify="required" type="text" class="layui-input" id="startTime" name="startTime">
 		</div>
 	</div>
 	<div class="layui-form-item">
-		<label class="layui-form-label">结束时间</label>
+		<label class="layui-form-label">结束时间<span style="color:red">*</span></label>
 		<div class="layui-input-block">
 			<input lay-verify="required" type="text" class="layui-input" id="endTime" name="endTime">
 		</div>
 	</div>
 	<div class="layui-form-item layui-form-text">
-    	<label class="layui-form-label">请假原因</label>
+    	<label class="layui-form-label">请假原因<span style="color:red">*</span></label>
     	<div class="layui-input-block">
       		<textarea lay-verify="required" name="reason" placeholder="" class="layui-textarea"></textarea>
     	</div>

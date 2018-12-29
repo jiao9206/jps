@@ -43,6 +43,8 @@ public class ActivitiServiceImpl implements IActivitiService {
 			String bussinessId=UUID.randomUUID().toString().replaceAll("-", "");
 			//开启流程
 			Map<String,Object> variables=new HashMap<String,Object>();
+			variables.put("userId", "");
+			variables.put("roles", "ordinary");
 			identityService.setAuthenticatedUserId(user.getUser_name());
 			ProcessInstance pi=runtimeService.startProcessInstanceByKey("leave",bussinessId,variables);
 			String processInstanceId=pi.getProcessInstanceId();

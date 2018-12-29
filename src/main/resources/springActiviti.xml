@@ -24,6 +24,16 @@
 		<property name="activityFontName" value="宋体"/>
 		<property name="labelFontName" value="宋体"/>
 		<property name="annotationFontName" value="宋体"/>
+		<property name="customSessionFactories">
+			<list>
+				<bean class="com.stu.jps.activiti.userAndGroupManage.CustomUserEntityManagerFactory">
+					<property name="customUserEntityManager" ref="customUserEntityManager"/>
+				</bean>
+				<bean class="com.stu.jps.activiti.userAndGroupManage.CustomGroupEntityManagerFactory">
+					<property name="customGroupEntityManager" ref="customGroupEntityManager"></property>
+				</bean>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">

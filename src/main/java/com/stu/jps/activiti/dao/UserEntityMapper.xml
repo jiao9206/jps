@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.stu.jps.activiti.dao.UserEntityMapper">
+
+	<resultMap type="com.stu.jps.activiti.entity.UserEntity" id="userEntity">
+		<id column="id" jdbcType="VARCHAR" property="id"/>
+		<result column="firstName" jdbcType="VARCHAR" property="firstName"/>
+		<result column="lastName" jdbcType="VARCHAR" property="lastName"/>
+		<result column="email" jdbcType="VARCHAR" property="email"/>
+		<result column="password" jdbcType="VARCHAR" property="password"/>
+	</resultMap>
+	
+	<resultMap type="com.stu.jps.activiti.entity.GroupEntity" id="groupEntity">
+		<id column="id" jdbcType="VARCHAR" property="id"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="type" jdbcType="VARCHAR" property="type"/>
+	</resultMap>
+	
+	<select id="findUserById" parameterType="string" resultMap="userEntity">
+		SELECT user_name id,user_name firstName,user_name lastName,email email,pass_word password FROM user WHERE user_name=#{userId}
+	</select>
+	
+	<select id="findGroupEntityListById" parameterType="string" resultMap="groupEntity">
+		SELECT r.role_name id,r.role_name name,'assignment' type FROM role r LEFT JOIN relevance_user_role ru ON r.role_name=ru.roleid WHERE ru.userid=#{userId}
+	</select>
+	
+</mapper>
+
+   
+   

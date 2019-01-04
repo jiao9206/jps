@@ -268,6 +268,20 @@
 		<artifactId>activiti-bpmn-model</artifactId>
 		<version>5.22.0</version>
 	</dependency>
+	
+	<!-- spring的webSocket实现  特别注意，除了这俩jar包，tomcat升级到8以上版本 -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-websocket</artifactId>
+	    <version>5.0.11.RELEASE</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.tomcat.embed</groupId>
+	    <artifactId>tomcat-embed-websocket</artifactId>
+	    <version>8.0.23</version>
+	</dependency>
+
+	
   </dependencies>
   <build>
     <finalName>jps</finalName>

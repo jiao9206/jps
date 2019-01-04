@@ -38,6 +38,7 @@
 			classpath:springMybatis.xml
 			classpath:springShiro.xml
 			classpath:springActiviti.xml
+			classpath:springWebSocket.xml
 		</param-value>
 	</context-param>
 	<listener>

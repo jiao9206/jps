@@ -269,7 +269,7 @@
 		<version>5.22.0</version>
 	</dependency>
 	
-	<!-- spring的webSocket实现  特别注意，除了这俩jar包，tomcat升级到8以上版本 -->
+	<!-- spring的webSocket实现  特别注意，除了这俩jar包，tomcat需升级到8以上版本 -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-websocket</artifactId>
@@ -281,6 +281,19 @@
 	    <version>8.0.23</version>
 	</dependency>
 
+	<!-- java mail发送邮件 -->
+	<dependency>
+	    <groupId>javax.mail</groupId>
+	    <artifactId>mail</artifactId>
+	    <version>1.4.7</version>
+	</dependency>
+	<dependency>
+	    <groupId>javax.activation</groupId>
+	    <artifactId>activation</artifactId>
+	    <version>1.1.1</version>
+	</dependency>
+		
+	
 	
   </dependencies>
   <build>
